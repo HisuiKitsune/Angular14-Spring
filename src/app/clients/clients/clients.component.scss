@@ -1,0 +1,62 @@
+.table{
+  width: 100% !important ;
+  margin-top: 2em;
+}
+
+div.table{
+  width: 100%;
+  margin: auto;
+}
+
+.loading-spinner {
+  padding: 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+ }
+
+ .mat-header-cell{
+  font-weight: bold;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: #C2185B;
+}
+
+.mat-row .mat-cell {
+  border-bottom: 2px solid none;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.mat-column-id {
+  text-align: left;
+  font-size: 18px;
+  border-left: 10px solid #B0BEC5;
+}
+
+.mat-column-quantity {
+  font-size: 18px;
+  text-align: center;
+  font-style: italic;
+}
+
+.mat-column-name,
+  .mat-column-cpf,
+    .mat-column-email,
+      .mat-column-phone {
+  font-size: 18px;
+  text-align: center;
+}
+
+.mat-column-actions {
+  font-size: 18px;
+  text-align: center;
+}
+
+.mat-fab{
+  margin-top: 2em;
+  margin-left: 1em;
+  margin-right: 1em;
+}
