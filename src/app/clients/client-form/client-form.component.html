@@ -1,0 +1,41 @@
+<mat-card>
+
+  <mat-toolbar color="primary">Add Client</mat-toolbar>
+
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" formControlName="name" required/>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Type Client Name</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>CPF</mat-label>
+      <input matInput placeholder="CPF" formControlName="cpf" required/>
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Type Client CPF</mat-hint>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>E-Mail</mat-label>
+      <input matInput placeholder="E-mail" formControlName="email" required>
+      <mat-icon matSuffix>mail</mat-icon>
+      <mat-hint>Type Client E-mail</mat-hint>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill" class="full-width">
+      <mat-label>Phone</mat-label>
+      <input matInput placeholder="Phone" formControlName="phone" required>
+      <mat-icon matSuffix>phone</mat-icon>
+      <mat-hint>Type Client Phone (Can be Blank)</mat-hint>
+    </mat-form-field>
+
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="onSubmit()"><mat-icon>done</mat-icon></button>
+      <button mat-raised-button color="accent" (click)="onCancel()"><mat-icon>keyboard_return</mat-icon></button>
+    </mat-card-actions>
+
+  </form>
+</mat-card>
