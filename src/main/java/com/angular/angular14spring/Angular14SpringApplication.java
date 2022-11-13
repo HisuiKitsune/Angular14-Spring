@@ -20,7 +20,7 @@ public class Angular14SpringApplication {
 	@Bean
 	CommandLineRunner initDatabse(ClientRepository clientRepository) {
 		return args -> {
-			clientRepository.deleteAll();
+		 	clientRepository.deleteAll();
 
 			Client c = new Client();
 			c.setCpf("123456789");
