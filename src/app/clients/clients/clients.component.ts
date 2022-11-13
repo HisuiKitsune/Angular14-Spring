@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { ErrorDialogComponent } from 'src/app/shared/components/error-dialog/error-dialog.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Client } from './../model/client';
 import { ClientsService } from './../services/clients.service';
 
@@ -16,9 +17,8 @@ import { ClientsService } from './../services/clients.service';
 })
 export class ClientsComponent implements OnInit {
 
-  @Input() clients: Client[] = [];
   clients$: Observable<Client[]> | null = null;
-  displayedColumns = ['id','cpf','name','email','phone','actions'];
+
   @Output() edit = new EventEmitter(false);
 
   //clientsService: ClientsService;
@@ -27,7 +27,8 @@ export class ClientsComponent implements OnInit {
     public dialog: MatDialog,
     private clientsService: ClientsService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private snackBar: MatSnackBar
     ) {
 
     this.clients$ = this.clientsService.list()
@@ -44,16 +45,39 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit(): void { }
 
+  refresh() {
+    this.clients$ = this.clientsService.list()
+    .pipe(
+      catchError(error => {
+        this.onError('Error on listing clients');
+        return of([])
+      })
+    );
+  }
 
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route});
   }
 
   onEdit(client: Client) {
-    this.edit.emit(client)
-    this.router.navigate(['edit', client.id], {relativeTo: this.route});
+    this.router.navigate(['edit', client._id], {relativeTo: this.route});
 
   }
+  onRemove(client: Client) {
+    this.clientsService.remove(client._id).subscribe(
+      () =>
+      {
+        this.refresh();
+        this.snackBar.open('Removed client', 'X',
+      {
+        duration: 5000,
+        verticalPosition: 'top',
+        horizontalPosition: 'center'
+      });},
+
+        () => this.onError('Error on removing client'));
+
+      }
 }
 
 

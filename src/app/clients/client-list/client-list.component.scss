@@ -1,0 +1,35 @@
+
+ .mat-header-cell{
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.mat-row:hover .mat-cell {
+  border-color: #E91E63;
+}
+
+.mat-row .mat-cell {
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  cursor: default;
+  transition: all 0.3s;
+}
+
+.mat-column-id {
+  text-align: left;
+  border-left: 3px solid transparent;
+}
+.mat-column-actions {
+  flex: 0 0 75px;
+  border-right: 3px solid transparent;
+
+
+}
+.action-column-header {
+  flex: 0 0 55px;
+  margin-left: 1.2em;
+
+}
+
+
+

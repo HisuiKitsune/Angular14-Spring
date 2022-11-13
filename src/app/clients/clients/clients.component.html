@@ -1,55 +1,14 @@
 <mat-toolbar class="header" color="primary"><span>Clients</span></mat-toolbar>
 
-<mat-card>
-  <div *ngIf="clients$ | async as clients; else loading">
-    <mat-table [dataSource]="clients" class="table">
-      <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef>ID</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{ client.id }}</mat-cell>
-      </ng-container>
+<mat-card class="mat-elevation-z8">
+<app-client-list *ngIf="clients$ | async as clients; else loading"
+[clients]="clients"
+(add)="onAdd()"
+(edit)="onEdit($event)"
+(remove)="onRemove($event)">
+</app-client-list>
 
-      <ng-container matColumnDef="cpf">
-        <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{ client.cpf }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="name">
-        <mat-header-cell *matHeaderCellDef>Name</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{ client.name }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="email">
-        <mat-header-cell *matHeaderCellDef>E-mail</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{ client.email }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="phone">
-        <mat-header-cell *matHeaderCellDef>Phone</mat-header-cell>
-        <mat-cell *matCellDef="let client">{{ client.phone }}</mat-cell>
-      </ng-container>
-
-      <ng-container matColumnDef="actions">
-        <mat-header-cell *matHeaderCellDef class="action-column-header">
-          <button mat-mini-fab color="primary" aria-label="Add Client">
-            <mat-icon (click)="onAdd()">add</mat-icon>
-          </button>
-        </mat-header-cell>
-
-        <mat-cell *matCellDef="let client">
-          <button mat-icon-button color="accent" aria-label="Edit Client">
-            <mat-icon  (click)="onEdit(client)">edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" aria-label="Remove Client">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-cell>
-      </ng-container>
-
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
-    </mat-table>
-  </div>
-  <ng-template #loading>
+<ng-template #loading>
     <div class="loading-spinner">
       <mat-spinner></mat-spinner>
     </div>

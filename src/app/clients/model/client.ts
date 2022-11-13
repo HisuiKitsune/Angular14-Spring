@@ -1,8 +1,8 @@
 export interface Client {
-  id: number;
+  _id: string;
   cpf: string
   name: string;
   email: string;
-  phone: number;
+  phone: string;
 
 }

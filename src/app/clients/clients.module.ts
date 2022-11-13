@@ -17,11 +17,15 @@ import { SharedModule } from './../shared/shared.module';
 import { ClientFormComponent } from './client-form/client-form.component';
 import { ClientsRoutingModule } from './clients-routing.module';
 import { ClientsComponent } from './clients/clients.component';
+import { ClientListComponent } from './client-list/client-list.component';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
+
 
 @NgModule({
   declarations: [
     ClientsComponent,
-    ClientFormComponent
+    ClientFormComponent,
+    ClientListComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +42,8 @@ import { ClientsComponent } from './clients/clients.component';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    NgxMaskModule
   ]
 })
 export class ClientsModule { }

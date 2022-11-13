@@ -1,40 +1,55 @@
 <mat-toolbar class="header" color="primary"><span>Add Client</span></mat-toolbar>
 
-
-<mat-card>
+<mat-card class="mat-elevation-z8">
 
   <form [formGroup]="form" class="min-width">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" formControlName="name" required/>
+      <input matInput placeholder="Jhon Doe" type="text" formControlName="name" maxlength="50" #name required/>
       <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-      <mat-hint>Type Client Name</mat-hint>
+      <mat-hint>Type client name</mat-hint>
+      <mat-hint align="end">{{ name.value.length  || 0 }} / 50</mat-hint>
+      <mat-error *ngIf="form.get('name')?.invalid">{{
+        getErrorMessage("name")
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>CPF</mat-label>
-      <input matInput placeholder="CPF" formControlName="cpf" required/>
+      <input matInput mask="000.000.000-00" placeholder="012.345.678-90" maxlength="14" minlength="11" formControlName="cpf" #cpf required/>
       <mat-icon matSuffix>badge</mat-icon>
-      <mat-hint>Type Client CPF</mat-hint>
+      <mat-hint>Type client CPF</mat-hint>
+      <mat-hint align="end">{{ cpf.value.length || 0 }} / 14</mat-hint>
+      <mat-error *ngIf="form.get('cpf')?.invalid">{{
+        getErrorMessage("email")
+      }}</mat-error>
     </mat-form-field>
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>E-Mail</mat-label>
-      <input matInput placeholder="E-mail" formControlName="email" required>
+      <input matInput placeholder="example@email.com" formControlName="email" maxlength="50" #email required>
       <mat-icon matSuffix>mail</mat-icon>
-      <mat-hint>Type Client E-mail</mat-hint>
+      <mat-hint>Type client e-mail</mat-hint>
+      <mat-hint align="end">{{ email.value.length || 0 }} / 50</mat-hint>
+      <mat-error *ngIf="form.get('email')?.invalid">{{
+        getErrorMessage("email")
+      }}</mat-error>
     </mat-form-field>
 
 
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Phone</mat-label>
-      <input matInput placeholder="Phone" formControlName="phone" required>
+      <input matInput mask="(00) 00000-0000" placeholder="(00) 00000-0000" maxlength="20" minlength="11" #phone formControlName="phone"/>
       <mat-icon matSuffix>phone</mat-icon>
-      <mat-hint>Type Client Phone (Can be Blank)</mat-hint>
+      <mat-hint>Type client phone (can be blank)</mat-hint>
+      <mat-hint align="end">{{ phone.value.length || 0 }} / 15</mat-hint>
+      <mat-error *ngIf="form.get('phone')?.invalid">{{
+        getErrorMessage("phone")
+      }}</mat-error>
     </mat-form-field>
 
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="onSubmit()"><mat-icon>done</mat-icon></button>
+      <button mat-raised-button color="primary" [disabled]="form.invalid" (click)="onSubmit()"><mat-icon>done</mat-icon></button>
       <button mat-raised-button color="accent" (click)="onCancel()"><mat-icon>keyboard_return</mat-icon></button>
     </mat-card-actions>
 

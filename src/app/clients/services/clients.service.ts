@@ -18,9 +18,13 @@ export class ClientsService {
   }
 
   save(client: Partial<Client>) {
-    if(client.id) {
+    if (client._id) {
       return this.update(client);
     }
+      return this.create(client);
+  }
+
+  private create(client: Partial<Client>) {
     return this.httpClient.post<Client>(this.API, client);
   }
 
@@ -29,7 +33,10 @@ export class ClientsService {
   }
 
   private update(client: Partial<Client>) {
-    return this.httpClient.put<Client>(`${this.API}/${client.id}`, client);
+    return this.httpClient.put<Client>(`${this.API}/${client._id}`, client);
+  }
+  remove(id: string) {
+    return this.httpClient.delete(`${this.API}/${id}`);
   }
 
 }

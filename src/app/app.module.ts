@@ -8,9 +8,11 @@ import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxMaskModule, IConfig } from 'ngx-mask';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     MatDialogModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    NgxMaskModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
