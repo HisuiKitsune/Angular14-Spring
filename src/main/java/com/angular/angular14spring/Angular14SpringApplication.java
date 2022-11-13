@@ -23,10 +23,10 @@ public class Angular14SpringApplication {
 		 	clientRepository.deleteAll();
 
 			Client c = new Client();
-			c.setCpf("123456789");
-			c.setName("Breno");
-			c.setEmail("X@gmail.com");
-			c.setPhone(987654321);
+			c.setCpf("12345678910");
+			c.setName("Jhon Doe");
+			c.setEmail("jhon@email.com");
+			c.setPhone("00123456798");
 
 			clientRepository.save(c);
 		};
