@@ -17,7 +17,19 @@ export class ClientsService {
     return this.httpClient.get<Client[]>(this.API).pipe(delay(1000));
   }
 
-  save(client: Client) {
+  save(client: Partial<Client>) {
+    if(client.id) {
+      return this.update(client);
+    }
     return this.httpClient.post<Client>(this.API, client);
   }
+
+  loadById(id: string) {
+    return this.httpClient.get<Client>(`${this.API}/${id}`);
+  }
+
+  private update(client: Partial<Client>) {
+    return this.httpClient.put<Client>(`${this.API}/${client.id}`, client);
+  }
+
 }

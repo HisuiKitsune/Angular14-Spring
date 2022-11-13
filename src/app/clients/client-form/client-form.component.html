@@ -1,8 +1,9 @@
+<mat-toolbar class="header" color="primary"><span>Add Client</span></mat-toolbar>
+
+
 <mat-card>
 
-  <mat-toolbar color="primary">Add Client</mat-toolbar>
-
-  <form [formGroup]="form">
+  <form [formGroup]="form" class="min-width">
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>Name</mat-label>
       <input matInput placeholder="Name" formControlName="name" required/>
@@ -13,7 +14,7 @@
     <mat-form-field appearance="fill" class="full-width">
       <mat-label>CPF</mat-label>
       <input matInput placeholder="CPF" formControlName="cpf" required/>
-      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-icon matSuffix>badge</mat-icon>
       <mat-hint>Type Client CPF</mat-hint>
     </mat-form-field>
 

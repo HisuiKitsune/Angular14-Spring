@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of } from 'rxjs';
@@ -16,8 +16,10 @@ import { ClientsService } from './../services/clients.service';
 })
 export class ClientsComponent implements OnInit {
 
-  clients$: Observable<Client[]>;
+  @Input() clients: Client[] = [];
+  clients$: Observable<Client[]> | null = null;
   displayedColumns = ['id','cpf','name','email','phone','actions'];
+  @Output() edit = new EventEmitter(false);
 
   //clientsService: ClientsService;
 
@@ -45,6 +47,12 @@ export class ClientsComponent implements OnInit {
 
   onAdd() {
     this.router.navigate(['new'], {relativeTo: this.route});
+  }
+
+  onEdit(client: Client) {
+    this.edit.emit(client)
+    this.router.navigate(['edit', client.id], {relativeTo: this.route});
+
   }
 }
 

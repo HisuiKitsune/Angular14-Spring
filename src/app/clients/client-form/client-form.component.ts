@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, NonNullableFormBuilder } from '@angular/forms';
 import { MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
 
 import { ClientsService } from './../services/clients.service';
@@ -16,23 +16,20 @@ export class ClientFormComponent implements OnInit {
   verticalPosition: MatSnackBarVerticalPosition = 'bottom';
 
 
-  form: FormGroup;
+  form = this.formBuilder.group( {
+    name: [''],
+    cpf: [''],
+    email: [''],
+    phone: [],
+  });
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: NonNullableFormBuilder,
     private service: ClientsService,
     private _snackBar: MatSnackBar,
     private location: Location
     ) {
 
-    this.form = this.formBuilder.group({
-
-      name: [null],
-      cpf: [null],
-      email: [null],
-      phone: [null]
-
-    });
   }
 
   ngOnInit(): void {
