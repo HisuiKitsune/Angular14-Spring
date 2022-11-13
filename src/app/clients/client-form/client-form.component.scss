@@ -1,5 +1,8 @@
+mat-card {
+  width: 50%;
+}
 .full-width {
-  margin: 2em auto;
+  margin: 1.5em auto;
   width: 100%;
 }
 
@@ -7,4 +10,12 @@
   width: 100%;
   min-width: 150px;
 
+}
+
+mat-toolbar.header {
+  height: 4em;
+  font-weight: lighter;
+}
+mat-toolbar.header span {
+  margin-left: 1em;
 }
