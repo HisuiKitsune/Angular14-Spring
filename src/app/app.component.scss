@@ -12,9 +12,7 @@ mat-toolbar.nav span{
  font-size: medium;
  margin-left: 1em;
 }
-img {
-  margin-left: 0.5em;
-}
+
 .spacer {
   flex: 1 1 auto;
 }
@@ -35,8 +33,9 @@ a{
 span.github:hover {
   background-color: black;
 }
-span img {
-  margin-right: 0.5em;
+span img.java,
+span img.spring {
+  margin-left: 0.5em;
 }
 
 footer.footer {
@@ -53,6 +52,7 @@ footer.footer {
 }
 
 .footer span {
+  margin-left: -2em;
   margin: auto;
   display: flex;
   align-items: center;
