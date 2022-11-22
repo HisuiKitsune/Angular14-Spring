@@ -9,7 +9,7 @@ import { Client } from './../model/client';
 })
 export class ClientsService {
 
-  private readonly API = 'api/clients';
+  private readonly API = "http://localhost:8080/angular14service/api/clients";
 
   constructor(private httpClient: HttpClient) { }
 
