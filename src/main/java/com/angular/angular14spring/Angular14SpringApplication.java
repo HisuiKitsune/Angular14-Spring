@@ -7,11 +7,12 @@ import com.angular.angular14spring.repository.ClientRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
 
 @SpringBootApplication
-public class Angular14SpringApplication {
+public class Angular14SpringApplication extends SpringBootServletInitializer {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Angular14SpringApplication.class, args);

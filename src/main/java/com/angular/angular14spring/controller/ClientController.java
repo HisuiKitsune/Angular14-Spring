@@ -34,6 +34,7 @@ public class ClientController {
     public List<Client> list() {
         return clientRepository.findAll();
     }
+    
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> findById(@PathVariable Long id) {
