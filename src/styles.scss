@@ -8,8 +8,14 @@ $my-app-theme: mat-dark-theme($my-app-primary, $my-app-accent, $my-app-warn);
 @include angular-material-theme($my-app-theme);
 
 
-html, body { height: 100%; background-color: #303030;}
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html { height: 100%; background-color: #303030; box-sizing: border-box;}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  min-height: 100%; position: relative;
+  padding-bottom: 2rem;
+  box-sizing: inherit;
+}
 
 
 mat-card {
