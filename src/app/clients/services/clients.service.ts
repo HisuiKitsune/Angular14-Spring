@@ -9,7 +9,7 @@ import { Client } from './../model/client';
 })
 export class ClientsService {
 
-  private readonly API = "http://localhost:8080/angular14service/api/clients";
+  private readonly API = "http://linuxserver.zapto.org:9090/angular14service/api/clients";
 
   constructor(private httpClient: HttpClient) { }
 
