@@ -19,3 +19,10 @@ mat-toolbar.header {
 mat-toolbar.header span {
   margin-left: 1em;
 }
+
+@media screen and (max-width: 767px) {
+  mat-card{
+  width: 90%;
+  }
+
+}
